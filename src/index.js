@@ -3,6 +3,7 @@ const bodyParser = require('body-parser')
 const ServerConfig = require('./config/serverConfig')
 const connectDB = require('./config/dbConfig')
 
+
 const app = express()
 
 // If request is in JSON, text, urlencoded it correctly reads by Express Server
