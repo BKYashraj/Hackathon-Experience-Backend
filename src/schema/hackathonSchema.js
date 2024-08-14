@@ -18,11 +18,6 @@ const hackathonExperienceSchema = new mongoose.Schema({
     required: [true, "Theme/Domain is required"],
     trim: true,
   },
-  organizer: {
-    type: String,
-    // required: [true, "Organizer is required"],
-    trim: true,
-  },
   category: {
     type: String,
     required: [true, "Category is required"],
@@ -48,19 +43,19 @@ const hackathonExperienceSchema = new mongoose.Schema({
   overallExperience: {
     type: String,
     required: [true, "Overall Experience is required"],
-    minlength: [10, "Overall Experience must be at least 20 characters long"],
+    // minlength: [10, "Overall Experience must be at least 20 characters long"],
     trim: true,
   },
   challenges: {
     type: String,
     required: [true, "Challenges faced is required"],
-    minlength: [10, "Challenges must be at least 20 characters long"],
+    // minlength: [10, "Challenges must be at least 20 characters long"],
     trim: true,
   },
   highlights: {
     type: String,
     required: [true, "Highlights are required"],
-    minlength: [10, "Highlights must be at least 20 characters long"],
+    // minlength: [10, "Highlights must be at least 20 characters long"],
     trim: true,
   },
   winningPhoto: {
@@ -70,7 +65,7 @@ const hackathonExperienceSchema = new mongoose.Schema({
   keyTipsForJuniors: {
     type: String,
     required: [true, "Key tips for juniors are required"],
-    minlength: [10, "Key tips must be at least 10 characters long"],
+    // minlength: [10, "Key tips must be at least 10 characters long"],
     trim: true,
   },
   projectDemoLink: {

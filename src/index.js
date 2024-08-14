@@ -7,6 +7,8 @@ const User = require('./schema/UserSchema')
 const userRouter = require('./routes/userRoute')
 const authRouter = require('./routes/authRoute')
 const { isLoggedIn } = require('./validation/authValidator')
+const uploader = require('./middlewares/multerMiddleware')
+const hackathonRouter = require('./routes/hackathonRoute')
 
 const app = express()
 
@@ -20,12 +22,16 @@ app.use(cookieParser());// to access cookie by server when any service call serv
 // Routing middleware
 app.use('/users', userRouter);
 app.use('/auth', authRouter);
-
+app.use('/hackathon', hackathonRouter);
 app.post('/ping', isLoggedIn,(req, res) => {
   console.log(req.body);
   console.log('Auth Token:', req.cookies);
   return res.json({message: 'pong'});
 })
+
+app.post('/papers', uploader.single('incomingFile'),(req, res) => {
+  return res.json({message: 'ok'});
+});
 
 app.listen(ServerConfig.PORT, async () => {
   await connectDB();
