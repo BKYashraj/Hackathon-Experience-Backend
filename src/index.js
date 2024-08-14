@@ -9,6 +9,7 @@ const authRouter = require('./routes/authRoute')
 const { isLoggedIn } = require('./validation/authValidator')
 const uploader = require('./middlewares/multerMiddleware')
 const hackathonRouter = require('./routes/hackathonRoute')
+const paperRouter = require('./routes/paperRoute')
 
 const app = express()
 
@@ -23,6 +24,8 @@ app.use(cookieParser());// to access cookie by server when any service call serv
 app.use('/users', userRouter);
 app.use('/auth', authRouter);
 app.use('/hackathon', hackathonRouter);
+app.use('/paper', paperRouter);
+
 app.post('/ping', isLoggedIn,(req, res) => {
   console.log(req.body);
   console.log('Auth Token:', req.cookies);
