@@ -3,6 +3,7 @@ const bodyParser = require('body-parser')
 const ServerConfig = require('./config/serverConfig')
 const connectDB = require('./config/dbConfig')
 const User = require('./schema/UserSchema')
+const userRouter = require('./routes/userRoute')
 
 const app = express()
 
@@ -11,6 +12,9 @@ const app = express()
 app.use(bodyParser.json());
 app.use(bodyParser.text());
 app.use(bodyParser.urlencoded());
+
+// Routing middleware
+app.use('/users', userRouter);
 
 app.post('/ping', (req, res) => {
   console.log(req.body);

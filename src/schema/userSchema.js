@@ -1,24 +1,22 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 
 const userSchema = new mongoose.Schema({
     firstName: {
         type: String,
         required: [true, "First Name is required"],
-        // minlength: [5, "First name must be atleast 5 character long"],
+        minlength: [5, "First name must be at least 5 characters long"],
         lowercase: true,
-        trim: true, // if the user gives extra spaces then it will automatically remove it
+        trim: true,
         maxlength: [20, "First name should be less than or equal to 20 characters"]
     },
-
     lastName: {
         type: String,
-        required: [true, "First Name is required"],
-        // minlength: [4, "First name must be atleast 4 character long"],
+        minlength: [5, "Last name must be at least 5 characters long"],
         lowercase: true,
-        trim: true, // if the user gives extra spaces then it will automatically remove it
-        maxlength: [20, "First name should be less than or equal to 20 characters"]
+        trim: true,
+        maxlength: [20, "Last name should be less than or equal to 20 characters"]
     },
-
     mobileNumber: {
         type: String,
         trim: true,
@@ -30,19 +28,32 @@ const userSchema = new mongoose.Schema({
     email: {
         type: String,
         trim: true,
-        required: [true, "Email should be provoided"],
+        required: [true, "Email should be provided"],
         unique: [true, "Email is already in use"],
-        match:  [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address']
+        match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please provide a valid email address']
     },
     password: {
         type: String,
         required: [true, "Password should be provided"],
-        minlength: [6, "Password should be minimum 6 character long"]
-    }
+        minlength: [6, "Password should be at least 6 characters long"]
+    },
+    // role: {
+    //     type: String,
+    //     enum: ["USER", "ADMIN"],
+    //     default: "USER"
+    // },
+    // address: {
+    //     type: String
+    // }
 }, {
     timestamps: true
 });
 
+// Hash the password before saving the user
+userSchema.pre('save', async function () {
+    const hashedPassword = await bcrypt.hash(this.password, 10);
+    this.password = hashedPassword;
+});
 
 const User = mongoose.model("User", userSchema); // collection
 
