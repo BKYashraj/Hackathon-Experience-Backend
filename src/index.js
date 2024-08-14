@@ -6,6 +6,7 @@ const connectDB = require('./config/dbConfig')
 const User = require('./schema/UserSchema')
 const userRouter = require('./routes/userRoute')
 const authRouter = require('./routes/authRoute')
+const { isLoggedIn } = require('./validation/authValidator')
 
 const app = express()
 
@@ -20,7 +21,7 @@ app.use(cookieParser());// to access cookie by server when any service call serv
 app.use('/users', userRouter);
 app.use('/auth', authRouter);
 
-app.post('/ping', (req, res) => {
+app.post('/ping', isLoggedIn,(req, res) => {
   console.log(req.body);
   console.log('Auth Token:', req.cookies);
   return res.json({message: 'pong'});
