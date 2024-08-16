@@ -34,7 +34,25 @@ async function login(req, res) {
   }
 }
 
+async function logout(req, res) {
+  console.log("Cookie", req.cookies);
+  console.log("logout");
+  res.cookie("authToken", "", {
+    httpOnly: true,
+    secure: true,
+    sameSite: 'none',
+    maxAge:  7 * 24 * 60 * 60 * 1000,
+  });
+
+  return res.status(200).json({
+    success: true,
+    message: "Successfully logged out",
+    data: {},
+    error: {},
+  });
+}
+
 module.exports = {
   login,
-  // logout,
+  logout,
 };

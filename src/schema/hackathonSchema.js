@@ -52,12 +52,12 @@ const hackathonExperienceSchema = new mongoose.Schema({
     // minlength: [10, "Challenges must be at least 20 characters long"],
     trim: true,
   },
-  highlights: {
-    type: String,
-    required: [true, "Highlights are required"],
-    // minlength: [10, "Highlights must be at least 20 characters long"],
-    trim: true,
-  },
+  // highlights: {
+  //   type: String,
+  //   required: [true, "Highlights are required"],
+  //   // minlength: [10, "Highlights must be at least 20 characters long"],
+  //   trim: true,
+  // },
   winningPhoto: {
     type: String, // URL to the photo
     trim: true,

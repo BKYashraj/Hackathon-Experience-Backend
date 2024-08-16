@@ -10,8 +10,18 @@ const { isLoggedIn } = require('./validation/authValidator')
 const uploader = require('./middlewares/multerMiddleware')
 const hackathonRouter = require('./routes/hackathonRoute')
 const paperRouter = require('./routes/paperRoute')
+const cors = require('cors');
 
 const app = express()
+
+// origin: 
+
+app.use(cors({
+  origin: ServerConfig.ORIGIN_LINK,
+  methods: ["GET", "POST", "DELETE", "PUT"],
+  allowedHeaders: ["Content-Type"],
+  credentials: true,
+}));
 
 // If request is in JSON, text, urlencoded it correctly reads by Express Server
 // deserialiser
