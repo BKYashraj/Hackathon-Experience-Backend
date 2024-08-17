@@ -5,14 +5,12 @@ const userSchema = new mongoose.Schema({
     firstName: {
         type: String,
         required: [true, "First Name is required"],
-        // minlength: [5, "First name must be at least 5 characters long"],
         lowercase: true,
         trim: true,
         maxlength: [20, "First name should be less than or equal to 20 characters"]
     },
     lastName: {
         type: String,
-        // minlength: [5, "Last name must be at least 5 characters long"],
         lowercase: true,
         trim: true,
         maxlength: [20, "Last name should be less than or equal to 20 characters"]
@@ -42,19 +40,18 @@ const userSchema = new mongoose.Schema({
         enum: ["USER", "ADMIN"],
         default: "USER"
     },
-    // address: {
-    //     type: String
-    // }
 }, {
     timestamps: true
 });
 
 // Hash the password before saving the user
 userSchema.pre('save', async function () {
-    const hashedPassword = await bcrypt.hash(this.password, 10);
-    this.password = hashedPassword;
+    if (this.isModified('password')) {
+        const hashedPassword = await bcrypt.hash(this.password, 10);
+        this.password = hashedPassword;
+    }
 });
 
-const User = mongoose.model("User", userSchema); // collection
+const User = mongoose.models.User || mongoose.model('User', userSchema); // Prevents overwriting
 
 module.exports = User;
