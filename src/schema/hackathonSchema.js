@@ -10,7 +10,7 @@ const hackathonExperienceSchema = new mongoose.Schema({
   title: {
     type: String,
     required: [true, "Project Title is required"],
-    minlength: [5, "Project Title must be at least 5 characters long"],
+    // minlength: [5, "Project Title must be at least 5 characters long"],
     trim: true,
   },
   themeOrDomain: {
