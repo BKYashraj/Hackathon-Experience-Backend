@@ -27,7 +27,7 @@ app.use(cors({
 // deserialiser
 app.use(bodyParser.json());
 app.use(bodyParser.text());
-app.use(bodyParser.urlencoded());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());// to access cookie by server when any service call server
 
 // Routing middleware
