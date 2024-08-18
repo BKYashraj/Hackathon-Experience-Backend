@@ -48,6 +48,8 @@ async function loginUser(authDetails) {
     userData: {
       email: user.email,
       firstName: user.firstName,
+      lastName: user.lastName,
+      mobileNumber: user.mobileNumber
     },
   };
 }
