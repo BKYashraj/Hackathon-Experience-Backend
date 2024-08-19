@@ -1,5 +1,5 @@
 const express = require('express');
-const { login, logout } = require('../controllers/authController');
+const { login, logout, google } = require('../controllers/authController');
 // const { login, logout } = require('../controllers/authController');
 
 // We have to initialise a router object to add routes in a new file
@@ -8,6 +8,8 @@ const { login, logout } = require('../controllers/authController');
 const authRouter = express.Router();
 
 authRouter.post('/login', login);
+
+authRouter.post('/google', google);
 
 authRouter.post('/logout', logout);
 
