@@ -21,7 +21,7 @@ const userSchema = new mongoose.Schema({
         maxlength: [10, "Phone number should be of length 10"],
         minlength: [10, "Phone number should be of length 10"],
         unique: [true, "Phone number is already in use"],
-        required: [true, "Phone number should be provided"]
+        // required: [true, "Phone number should be provided"]
     },
     email: {
         type: String,
