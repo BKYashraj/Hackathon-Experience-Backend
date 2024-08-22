@@ -1,5 +1,5 @@
 const { createProduct, addProduct, deleteProduct, getAllProductsData } = require("../services/hackathonService");
-
+const Product = require("../schema/hackathonSchema");
 async function insertProduct(req, res){
   try {
     const product = await createProduct({
@@ -33,6 +33,26 @@ async function insertProduct(req, res){
       error: error
     });
   } 
+}
+
+async function updateProduct(req, res) {
+  try {
+    const response = await Product.findByIdAndUpdate(req.params.id,req.body,{new: true});
+    return res.status(200).json({
+      success: true,
+      message: "Product updated successfully",
+      data: response,
+      error: {}
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(error.statusCode).json({
+      success: false,
+      message: error.reason,
+      data: {},
+      error: error
+    });
+  }
 }
 
 async function getProduct(req, res) {
@@ -99,5 +119,6 @@ module.exports = {
   insertProduct,
   getProduct,
   deleteProducts,
-  getProducts
+  getProducts,
+  updateProduct
 };

@@ -30,6 +30,7 @@ async function getHacks(userDetails, params) {
       console.error("Error in getHacks:", error); // Log the error
       throw new Error("Failed to fetch hacks");
     }
+
 }
 
 

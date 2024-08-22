@@ -4,6 +4,7 @@ const {
   getProduct,
   deleteProducts,
   getProducts,
+  updateProduct
 } = require("../controllers/hackathonController");
 const uploader = require("../middlewares/multerMiddleware");
 // const { isLoggedIn, isAdmin } = require("../validation/authValidator");
@@ -15,7 +16,15 @@ hackathonRouter.post(
   isLoggedIn, // Middleware Called
   // isAdmin,  // Middleware Called
   uploader.single("winningPhoto"),
-  insertProduct
+  insertProduct 
+);
+
+hackathonRouter.post(
+  "/update/:id",
+  // isLoggedIn, // Middleware Called
+  // // isAdmin,  // Middleware Called
+  uploader.single("winningPhoto"),
+  updateProduct
 );
 
 hackathonRouter.get("/:id",isLoggedIn, getProduct);

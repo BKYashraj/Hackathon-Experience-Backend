@@ -1,5 +1,6 @@
 const { JWT_SECRET } = require("../config/serverConfig");
 const User = require("../schema/userSchema");
+
 const { loginUser } = require("../services/authService");
 const bcryptjs = require("bcryptjs");
 const jwt = require("jsonwebtoken");
