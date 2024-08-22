@@ -72,6 +72,10 @@ const hackathonExperienceSchema = new mongoose.Schema({
     type: String, // URL to the project demo
     trim: true,
   },
+  userRef:{
+    type: String,
+    required: true,
+  }
 },{
   timestamps: true,
 });

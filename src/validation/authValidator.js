@@ -4,8 +4,6 @@ const { JWT_SECRET } = require("../config/serverConfig");
 async function isLoggedIn(req, res, next) {
   const token = req.cookies["authToken"]; // get the token from cookie
 
-  console.log(token);
-
   // if token is not provided, then user is not authenticated
   if (!token) {
     return res.status(401).json({
@@ -17,7 +15,8 @@ async function isLoggedIn(req, res, next) {
   }
   try {
     const decoded = jwt.verify(token, JWT_SECRET); // verify the token with secret key
-
+    // console.log(decoded);
+    req.user = decoded;
     console.log(decoded, decoded.exp, Date.now() / 1000);
 
     if (!decoded) {
@@ -31,11 +30,11 @@ async function isLoggedIn(req, res, next) {
 
     // if reached here, then user is authenticated allow them to access the api
 
-    req.user = {
-      email: decoded.email,
-      id: decoded.id,
-      role: decoded.role,
-    };
+    // req.user = {
+    //   email: decoded.email,
+    //   id: decoded.id,
+    //   role: decoded.role,
+    // };
 
     next(); // move to next middleware
   } catch (error) {

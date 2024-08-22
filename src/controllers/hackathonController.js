@@ -16,6 +16,7 @@ async function insertProduct(req, res){
       highlights: req.body.highlights,
       keyTipsForJuniors: req.body.keyTipsForJuniors,
       projectDemoLink: req.body.projectDemoLink,
+      userRef: req.user.id, 
     });
     return res.status(201).json({
       success: true,

@@ -47,6 +47,7 @@ async function loginUser(authDetails) {
     userRole,
     userData: {
       email: user.email,
+      id:user.id,
       firstName: user.firstName,
       lastName: user.lastName,
       mobileNumber: user.mobileNumber

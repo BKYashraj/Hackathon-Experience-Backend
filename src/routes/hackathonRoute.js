@@ -18,10 +18,10 @@ hackathonRouter.post(
   insertProduct
 );
 
-hackathonRouter.get("/:id", getProduct);
+hackathonRouter.get("/:id",isLoggedIn, getProduct);
 
 hackathonRouter.get("/", getProducts);
 
-hackathonRouter.delete("/:id", deleteProducts);
+hackathonRouter.delete("/:id",isLoggedIn, deleteProducts);
 
 module.exports = hackathonRouter;

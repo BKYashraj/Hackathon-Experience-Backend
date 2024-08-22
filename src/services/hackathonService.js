@@ -1,7 +1,8 @@
 const cloudinary = require("../config/cloudinaryConfig");
 const productRepository = require('../repositories/hackathonRepository');
 const fs = require("fs/promises"); // After uploading image at multer we delete that image from server
-const { findProductById, deleteProductById } = require("../repositories/hackathonRepository");
+const { getAllProducts, findProductById, deleteProductById } = require("../repositories/hackathonRepository");
+
 
 async function createProduct(productDetails) {
   // 1. We should check if an image is coming to create the product, then we should first upload it on
@@ -41,7 +42,7 @@ async function addProduct(productId) {
 }
 
 async function getAllProductsData() {
-  const product = await productRepository.getAllProducts();
+  const product = await getAllProducts();
   if(product) return product;
   else throw { reason: "Not able to find product", statusCode: 500 };
 }
