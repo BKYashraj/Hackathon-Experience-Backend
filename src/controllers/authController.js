@@ -65,7 +65,7 @@ async function google(req, res, next) {
         await user.save(); // Save the updated user
       }
       const token = jwt.sign({ id: user._id }, JWT_SECRET);
-      const { password: pass, ...rest } = user._doc;
+      const { password: pass, ...rest } = user._doc; // Exclude password
       res
         .cookie("authToken", token, {
           httpOnly: true,
@@ -74,7 +74,7 @@ async function google(req, res, next) {
           maxAge: 7 * 24 * 60 * 60 * 1000,
         })
         .status(200)
-        .json(rest);
+        .json({ ...rest, id: user._id }); // Include user ID in response
     } else {
       const generatedPassword =
         Math.random().toString(36).slice(-8) +
@@ -91,7 +91,7 @@ async function google(req, res, next) {
       });
       await newUser.save();
       const token = jwt.sign({ id: newUser._id }, JWT_SECRET);
-      const { password: pass, ...rest } = newUser._doc;
+      const { password: pass, ...rest } = newUser._doc; // Exclude password
       res
         .cookie("authToken", token, {
           httpOnly: true,
@@ -100,13 +100,14 @@ async function google(req, res, next) {
           maxAge: 7 * 24 * 60 * 60 * 1000,
         })
         .status(200)
-        .json(rest);
+        .json({ ...rest, id: newUser._id }); // Include user ID in response
     }
   } catch (error) {
     console.log("Error is here", error);
     next(error);
   }
 }
+
 
 module.exports = {
   login,
