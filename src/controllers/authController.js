@@ -86,7 +86,7 @@ async function google(req, res, next) {
         // firstName:
         //   req.body.name.split(" ").join("").toLowerCase() +
         //   Math.random().toString(36).slice(-4),
-        firstName: req.body.name.split(" ");
+        firstName: req.body.name.split(" "),
         email: req.body.email.toLowerCase(),
         password: hashedPassword,
         avatar: req.body.photo,
