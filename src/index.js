@@ -48,20 +48,18 @@ app.listen(ServerConfig.PORT, async () => {
 
   // Auto-request to keep the server alive
   setInterval(() => {
-    axios.post(`http://localhost:${ServerConfig.PORT}/ping`, {})
+    axios.post(`https://hackathon-experience-backend.onrender.com/ping`, {})
       .then(() => console.log('Auto-ping sent to keep the server alive.'))
       .catch(error => console.error('Error in auto-ping:', error.message));
   }, 10 * 60 * 1000);  // Every 10 minutes
 });
 
-  // For checking
-  // const newUser = await User.create({
-  //   email:'yashr@gmail.com',
-  //   password: '12348677',
-  //   firstName: 'yashraj',
-  //   lastName:'dote',
-  //   mobileNumber:'9768556744'
-  // });
-  // console.log(newUser);
-
-
+// For checking
+// const newUser = await User.create({
+//   email:'yashr@gmail.com',
+//   password: '12348677',
+//   firstName: 'yashraj',
+//   lastName:'dote',
+//   mobileNumber:'9768556744'
+// });
+// console.log(newUser);
