@@ -7,7 +7,7 @@ const { getAllProducts, findProductById, deleteProductById } = require("../repos
 async function createProduct(productDetails) {
   // 1. We should check if an image is coming to create the product, then we should first upload it on
   // cloudinary
-
+  
   const imagePath = productDetails.winningPhoto;
   if (imagePath) {
     try {
@@ -22,7 +22,7 @@ async function createProduct(productDetails) {
   }
 
   // 2. Then use the url from cloudinary and other propduct details to add product in db
-
+  
   const product = await productRepository.createProduct({
     ...productDetails,
     winningPhoto: productImage,
@@ -31,7 +31,7 @@ async function createProduct(productDetails) {
   if (!product) {
     throw { reason: "Not able to create product", statusCode: 500 };
   }
-
+  console.log("Product created successfully",product);
   return product;
 }
 

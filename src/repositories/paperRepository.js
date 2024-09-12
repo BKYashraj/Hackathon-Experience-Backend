@@ -1,6 +1,6 @@
 const Product = require("../schema/paperSchema");
 
-async function createProduct(productDetails) {
+async function createPaper(productDetails) {
   try {
     const response = await Product.create(productDetails);
     return response;
@@ -44,7 +44,7 @@ async function deleteProductById(productId) {
 }
 
 module.exports = {
-  createProduct,
+  createPaper,
   findProductById,
   deleteProductById,
   getAllProducts,

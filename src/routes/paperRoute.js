@@ -6,12 +6,14 @@ const {
   getProducts,
 } = require("../controllers/paperController");
 const { isLoggedIn } = require("../validation/authValidator");
+const uploader = require("../middlewares/multerMiddleware");
 
 const paperRouter = express.Router();
 
 paperRouter.post(
   "/",
   isLoggedIn, 
+  uploader.single("winningPhoto"),
   insertProduct
 );
 

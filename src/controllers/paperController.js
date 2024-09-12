@@ -1,22 +1,25 @@
-const { createProduct, addProduct, deleteProduct, getAllProductsData } = require("../services/paperService");
+const { addProduct, deleteProduct, getAllProductsData, createProduct } = require("../services/paperService");
 
 async function insertProduct(req, res) {
+  // console.log("Yashrajjjjjjjjjjjjjjjj")
   try {
+    // console.log("Yashrajjjjjjj",req.body.PaperTitle);
     const product = await createProduct({
-      hackathonName: req.body.hackathonName,
-      title: req.body.title,
-      themeOrDomain: req.body.themeOrDomain,
-      category: req.body.category,
-      mentorName: req.body.mentorName,
-      winningDocument: req.body.winningDocument,  
-      teamMembersNames: req.body.teamMembersNames,
-      techStack: req.body.techStack,
+      PaperTitle: req.body.PaperTitle,
+      Domain: req.body.Domain,
+      Abstract: req.body.Abstract,
+      AuthorsNames: req.body.AuthorsNames,
+      mentorName: req.body.mentorName, 
+      InstituteName: req.body.InstituteName,
+      JournalName: req.body.JournalName,
       overallExperience: req.body.overallExperience,
-      challenges: req.body.challenges,
-      highlights: req.body.highlights,
       keyTipsForJuniors: req.body.keyTipsForJuniors,
+      Conclusion: req.body.Conclusion,
+      winningPhoto: req.file?.path, 
+      PaperLink: req.body.PaperLink
     });
-    
+
+    // console.log("Yashraj Pravin Desale",product);
     return res.status(201).json({
       success: true,
       message: "Product created successfully",

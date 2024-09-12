@@ -1,74 +1,67 @@
 const mongoose = require('mongoose');
 
 const paperSchema = new mongoose.Schema({
-  hackathonName: {
+  PaperTitle: {
     type: String,
-    required: [true, "Hackathon Name is required"],
-    // minlength: [3, "Hackathon Name must be at least 3 characters long"],
+    required: [true, "Paper Title is required"],
+    minlength: [5, "Paper Title must be at least 5 characters long"],
     trim: true,
   },
-  title: {
+  Domain: {
     type: String,
-    required: [true, "Project Title is required"],
-    minlength: [5, "Project Title must be at least 5 characters long"],
+    required: [true, "Domain is required"],
     trim: true,
   },
-  themeOrDomain: {
+  Abstract: {
     type: String,
-    required: [true, "Theme/Domain is required"],
+    required: [true, "Abstract is required"],
     trim: true,
   },
-  category: {
+  AuthorsNames: {
     type: String,
-    required: [true, "Category is required"],
-    enum: ['Software', 'Hardware', 'Other'],
+    required: [true, "Authors' names are required"],
     trim: true,
   },
   mentorName: {
     type: String,
-    enum: ['Priya Rakibe', 'Gondhalekar', 'smita Patil'],
     required: [true, "Mentor name is required"],
+    enum: ['Priya Rakibe', 'Gondhalekar', 'Smita Patil'], // Adapted from original
     trim: true,
   },
-  teamMembersNames: {
-      type: String,
-      required: [true, "Team member name is required"],
-      trim: true,
-    },
-  techStack: [{
+  InstituteName: {
     type: String,
-    // required: [true, "Tech Stack is required"],
+    required: [true, "Institute name is required"],
     trim: true,
-  }],
+  },
+  JournalName: {
+    type: String,
+    required: [true, "Journal name is required"],
+    trim: true,
+  },
   overallExperience: {
     type: String,
     required: [true, "Overall Experience is required"],
-    // minlength: [10, "Overall Experience must be at least 20 characters long"],
-    trim: true,
-  },
-  challenges: {
-    type: String,
-    required: [true, "Challenges faced is required"],
-    // minlength: [10, "Challenges must be at least 20 characters long"],
-    trim: true,
-  },
-  highlights: {
-    type: String,
-    required: [true, "Highlights are required"],
-    // minlength: [10, "Highlights must be at least 20 characters long"],
-    trim: true,
-  },
-  winningDocument: {
-    type: String, // URL to the photo
     trim: true,
   },
   keyTipsForJuniors: {
     type: String,
-    required: [true, "Key tips for juniors are required"],
-    // minlength: [10, "Key tips must be at least 10 characters long"],
+    required: [true, "Key Tips for Juniors are required"],
     trim: true,
   },
-},{
+  Conclusion: {
+    type: String,
+    required: [true, "Conclusion is required"],
+    trim: true,
+  },
+  winningPhoto: {
+    type: String, // This will store the URL to the uploaded photo
+    trim: true,
+  },
+  PaperLink: {
+    type: String, // This will store the link to the paper or project demo
+    trim: true,
+  }
+}, {
   timestamps: true,
 });
 
