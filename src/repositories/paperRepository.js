@@ -20,7 +20,7 @@ async function findProductById(productId) {
   }
 }
 
-async function getAllProducts() {
+async function getAllResearch() {
   try {
     const products = await Product.find({});
     return products;
@@ -47,5 +47,5 @@ module.exports = {
   createPaper,
   findProductById,
   deleteProductById,
-  getAllProducts,
+  getAllResearch,
 };

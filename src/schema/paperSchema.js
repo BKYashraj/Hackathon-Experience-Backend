@@ -25,7 +25,7 @@ const paperSchema = new mongoose.Schema({
   mentorName: {
     type: String,
     required: [true, "Mentor name is required"],
-    enum: ['Priya Rakibe', 'Gondhalekar', 'Smita Patil'], // Adapted from original
+    
     trim: true,
   },
   InstituteName: {

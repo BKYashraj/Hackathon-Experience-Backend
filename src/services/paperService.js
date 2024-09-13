@@ -1,7 +1,7 @@
 const cloudinary = require("../config/cloudinaryConfig");
 const productRepository = require('../repositories/paperRepository');
 const fs = require("fs/promises"); // To delete the file after uploading
-const { findProductById, deleteProductById,createPaper } = require("../repositories/paperRepository");
+const { findProductById, deleteProductById, createPaper, getAllResearch } = require("../repositories/paperRepository");
 
 async function createProduct(productDetails) {
   // 1. We should check if an image is coming to create the product, then we should first upload it on
@@ -42,7 +42,7 @@ async function addProduct(productId) {
 }
 
 async function getAllProductsData() {
-  const products = await productRepository.getAllProducts();
+  const products = await getAllResearch();
   if (products) return products;
   else throw { reason: "Not able to find products", statusCode: 500 };
 }
