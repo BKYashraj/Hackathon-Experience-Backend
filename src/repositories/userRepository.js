@@ -1,4 +1,5 @@
 const HackathonExperience = require("../schema/hackathonSchema");
+const ResearchExperience = require("../schema/paperSchema");
 const User = require("../schema/userSchema");
 
 
@@ -33,9 +34,27 @@ async function getHacks(userDetails, params) {
 
 }
 
+async function getPapers(userDetails, params) {
+  const userId = params.id;
+  console.log("Fetching papers for user ID:", userId);
+  
+  try {
+    // Ensure you're checking the correct field (userRef) in the ResearchExperience schema
+    const listings = await ResearchExperience.find({ userRef: userId });
+    if (!listings || listings.length === 0) {
+      console.log(`No papers found for user ID: ${userId}`);
+      return [];
+    }
+    return listings;
+  } catch (error) {
+    console.error("Error in getPapers:", error); // Update error log for clarity
+    throw new Error("Failed to fetch research papers");
+  }
+}
 
 module.exports = {
   findUser,
   createUser,
-  getHacks
+  getHacks,
+  getPapers
 };

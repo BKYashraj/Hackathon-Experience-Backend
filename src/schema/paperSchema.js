@@ -60,6 +60,10 @@ const paperSchema = new mongoose.Schema({
   PaperLink: {
     type: String, // This will store the link to the paper or project demo
     trim: true,
+  },
+  userRef:{
+    type: String,
+    required: true,
   }
 }, {
   timestamps: true,

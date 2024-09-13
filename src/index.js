@@ -48,11 +48,11 @@ app.listen(ServerConfig.PORT, async () => {
 
   // Auto-request to keep the server alive
 
-  // setInterval(() => {
-  //   axios.post(`https://hackathon-experience-backend.onrender.com/ping`, {})
-  //     .then(() => console.log('Auto-ping sent to keep the server alive.'))
-  //     .catch(error => console.error('Error in auto-ping:', error.message));
-  // }, 10 * 60 * 1000);  // Every 10 minutes
+  setInterval(() => {
+    axios.post(`https://hackathon-experience-backend.onrender.com/ping`, {})
+      .then(() => console.log('Auto-ping sent to keep the server alive.'))
+      .catch(error => console.error('Error in auto-ping:', error.message));
+  }, 10 * 60 * 1000);  // Every 10 minutes
 
 });
 

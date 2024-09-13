@@ -16,7 +16,8 @@ async function insertProduct(req, res) {
       keyTipsForJuniors: req.body.keyTipsForJuniors,
       Conclusion: req.body.Conclusion,
       winningPhoto: req.file?.path, 
-      PaperLink: req.body.PaperLink
+      PaperLink: req.body.PaperLink,
+      userRef: req.user.id,
     });
 
     // console.log("Yashraj Pravin Desale",product);
