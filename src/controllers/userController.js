@@ -63,6 +63,7 @@ async function getAllPapersOfUser(req, res) {
     }
 
     const response = await getPapers(req.user, { id: userId }); // Pass the user and params to getHacks
+    console.log("Correct Response ::::::::::",response)
     return res.json({
       message: "Successfully fetched Research Papers",
       success: true,

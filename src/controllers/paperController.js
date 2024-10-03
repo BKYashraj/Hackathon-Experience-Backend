@@ -42,6 +42,7 @@ async function insertProduct(req, res) {
 async function getProduct(req, res) {
   try {
     const response = await addProduct(req.params.id);
+    
     return res.status(200).json({
       success: true,
       message: "Product fetched successfully",
