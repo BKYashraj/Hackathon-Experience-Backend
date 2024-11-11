@@ -26,7 +26,6 @@ const hackathonExperienceSchema = new mongoose.Schema({
   },
   mentorName: {
     type: String,
-    enum: ['Priya Rakibe', 'Gondhalekar', 'smita Patil'],
     required: [true, "Mentor name is required"],
     trim: true,
   },

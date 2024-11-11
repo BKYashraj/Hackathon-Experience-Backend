@@ -53,7 +53,6 @@ app.listen(ServerConfig.PORT, async () => {
       .then(() => console.log('Auto-ping sent to keep the server alive.'))
       .catch(error => console.error('Error in auto-ping:', error.message));
   }, 10 * 60 * 1000);  // Every 10 minutes
-
 });
 
 // For checking
