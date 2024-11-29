@@ -24,6 +24,11 @@ const hackathonExperienceSchema = new mongoose.Schema({
     enum: ['Software', 'Hardware', 'Other'],
     trim: true,
   },
+  collegeName: {
+    type: String,
+    required: [true, "College name is required"],
+    trim: true,
+  },
   mentorName: {
     type: String,
     required: [true, "Mentor name is required"],

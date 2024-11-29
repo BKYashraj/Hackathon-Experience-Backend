@@ -8,6 +8,9 @@ async function insertProduct(req, res){
       themeOrDomain: req.body.themeOrDomain,
       category: req.body.category,
       mentorName: req.body.mentorName,
+
+      collegeName: req.body.collegeName,
+
       winningPhoto: req.file?.path,  // ? is added because if file present then it works but if file means image not present it does not show error it works without image
       teamMembersNames: req.body.teamMembersNames,
       techStack: req.body.techStack,
