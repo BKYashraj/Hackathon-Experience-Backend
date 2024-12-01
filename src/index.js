@@ -12,6 +12,7 @@ const hackathonRouter = require('./routes/hackathonRoute');
 const paperRouter = require('./routes/paperRoute');
 const cors = require('cors');
 const axios = require('axios');  // Add axios for making HTTP requests
+const searchRouter = require('./routes/searchRoute');
 
 const app = express();
 
@@ -31,7 +32,7 @@ app.use('/users', userRouter);
 app.use('/auth', authRouter);
 app.use('/hackathon', hackathonRouter);
 app.use('/paper', paperRouter);
-
+app.use('/search', searchRouter);
 app.post('/ping', isLoggedIn, (req, res) => {
   console.log(req.body);
   console.log('Auth Token:', req.cookies);
