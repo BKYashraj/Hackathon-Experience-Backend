@@ -33,6 +33,7 @@ app.use('/auth', authRouter);
 app.use('/hackathon', hackathonRouter);
 app.use('/paper', paperRouter);
 app.use('/search', searchRouter);
+
 app.post('/ping', isLoggedIn, (req, res) => {
   console.log(req.body);
   console.log('Auth Token:', req.cookies);

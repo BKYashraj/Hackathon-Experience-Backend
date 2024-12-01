@@ -11,8 +11,6 @@ async function getSearch(req, res) {
           { "category": { "$regex": req.params.id}},
           { "mentorName": { "$regex": req.params.id}},
           { "collegeName": { "$regex": req.params.id}},
-          { "teamMembersNames": { "$regex": req.params.id}},
-          { "techStack": { "$regex": req.params.id}},  
         ]
       }
     )
