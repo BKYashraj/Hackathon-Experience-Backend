@@ -1,16 +1,16 @@
 const Product = require("../schema/hackathonSchema");
 async function getSearch(req, res) {
   try {
-    const userId = req.params.id; 
+    const userId = req.params.id.toLowerCase(); 
     const response = await Product.find(
       {
         "$or": [
-          { "hackathonName": { "$regex": req.params.id}},
-          { "title": { "$regex": req.params.id}},
-          { "themeOrDomain": { "$regex": req.params.id}},
-          { "category": { "$regex": req.params.id}},
-          { "mentorName": { "$regex": req.params.id}},
-          { "collegeName": { "$regex": req.params.id}},
+          { "hackathonName": { "$regex": userId, "$options": "i" } },
+          { "title": { "$regex": userId, "$options": "i" } },
+          { "themeOrDomain": { "$regex": userId, "$options": "i" } },
+          { "category": { "$regex": userId, "$options": "i" } },
+          { "mentorName": { "$regex": userId, "$options": "i" } },
+          { "collegeName": { "$regex": userId, "$options": "i" } },
         ]
       }
     )
